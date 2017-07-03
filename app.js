@@ -35,11 +35,22 @@ app.use(session( {
 
 //PASSPORT middlewares here-------------------------------------------------
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 //PASSPORT middlewares above------------------------------------------------
 
 
 
 //MIDDLESWARES--------------------------------------------------------------
+
+app.use((req, res, next) => {
+
+  if(req.user){
+    res.locals.currentUser = req.user;
+  }
+  next();
+});
 
 //MIDDLESWARES go above-----------------------------------------------------
 
@@ -48,6 +59,9 @@ app.use(session( {
 //ROUTES GO HERE-------------------------------------------------------------
 const index = require('./routes/index');
 app.use('/', index);
+
+const myAuthRoutes = require('./routes/auth-routes.js');
+app.use('/', myAuthRoutes);
 
 //ROUTES GO ABOVE-------------------------------------------------------------
 
