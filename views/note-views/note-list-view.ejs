@@ -1,0 +1,10 @@
+<h2>My Notes</h2>
+
+<ul>
+  <% notesAndStuff.forEach((oneNote) => { %>
+    <li>
+        <h3><%= oneNote.title %></h3>
+        <p> <%= oneNote.content %></p>
+    </li>
+  <% }) %>
+</ul>

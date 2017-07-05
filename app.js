@@ -9,8 +9,11 @@ const mongoose     = require('mongoose');
 const passport     = require('passport');
 const session      = require("express-session");
 
-
 const app = express();
+
+require('./config/passport-config.js');
+
+mongoose.connect('mongodb://localhost/express-users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -62,6 +65,9 @@ app.use('/', index);
 
 const myAuthRoutes = require('./routes/auth-routes.js');
 app.use('/', myAuthRoutes);
+
+const myNoteRoutes = require('./routes/note-routes.js');
+app.use('/', myNoteRoutes);
 
 //ROUTES GO ABOVE-------------------------------------------------------------
 

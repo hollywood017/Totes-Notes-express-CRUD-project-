@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get ('/signup', (req, res, next) => {
   if(req.user){
-    res.redirect('/');
+    res.redirect('/login');
   }
   else{
     res.render('auth-views/signup-view.ejs');
@@ -16,7 +16,7 @@ router.get ('/signup', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  if( req.body.signupUsername === '' || req.body.signupPassword === ''){
+  if( req.body.signupEmail === '' || req.body.signupPassword === ''){
     res.locals.messageForDumbUsers = "Please provide both Email and Password!";
     res.redirect('auth-views/signup-view.ejs');
     return;
@@ -37,7 +37,8 @@ router.post('/signup', (req, res, next) => {
       const scrambledPassword = bcrypt.hashSync(req.body.signupPassword, salt);
 
       const theUser = new UserModel ({
-        fullname: req.body.signupFullName,
+        firstname: req.body.signupFirstName,
+        lastname: req.body.signupLastName,
         email:req.body.signupEmail,
         encryptedPassword:scrambledPassword
       });
@@ -61,15 +62,11 @@ router.post('/signup', (req, res, next) => {
 
 //LOGIN------------------------------------------------------------
 
-router.get('/login', (req, res, next) => {
-  res.render('auth-views/login-view.ejs');
-});
-
 router.post('/login', passport.authenticate(
   'local',
   {
-    successRedirect: '/',
-    failureRedirect: '/login'
+    successRedirect: '/my-notes',
+    failureRedirect: '/signup'
   }
 ));
 //=================================================================
@@ -79,13 +76,12 @@ router.post('/login', passport.authenticate(
 
 //LOGOUT-----------------------------------------------------------
 
-//=================================================================
-
-
-
-
-//SOCIAL LOGINS----------------------------------------------------
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/signup');
+});
 
 //=================================================================
+
 
 module.exports = router;
