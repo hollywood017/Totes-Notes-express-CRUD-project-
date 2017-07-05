@@ -10,10 +10,11 @@ const passport     = require('passport');
 const session      = require("express-session");
 
 const app = express();
+require('dotenv').config();
 
 require('./config/passport-config.js');
 
-mongoose.connect('mongodb://localhost/express-users');
+mongoose.connect(process.env.MONGODB_URI);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
