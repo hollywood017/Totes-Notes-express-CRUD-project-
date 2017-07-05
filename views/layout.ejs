@@ -12,6 +12,7 @@
         <div class="topnav" id="myTopnav">
           <a class= "navbar" href="/">Home</a>
           <% if (typeof currentUser === "object"){ %>
+            <a class= "navbar" href="/my-notes">My Notes</a>
             <a class= "navbar" href="/notes/new">Create a Note</a>
             <a class= "navbar" href="/logout">Log Out</a>
             <% } else { %>
