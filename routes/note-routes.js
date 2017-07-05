@@ -10,12 +10,13 @@ router.get('/notes/new', (req, res, next) => {
     res.redirect('/signup');
   }
 });
-router.post('/notes', (req, res, next) => {
+router.post('/notes/new', (req, res, next) => {
   const theNote = new NoteModel({
     title : req.body.noteTitle,
     content: req.body.noteContent,
     user: req.user.email
   });
+
 
   theNote.save((err) => {
     if (err){
@@ -29,7 +30,7 @@ router.post('/notes', (req, res, next) => {
 router.get('/my-notes', (req, res, next) => {
   NoteModel.find(
     //find the notes owned by the logged in user
-    { user: req.user._id },
+    { user: req.user.email },
 
     (err, noteResults) => {
       if(err) {
@@ -38,7 +39,7 @@ router.get('/my-notes', (req, res, next) => {
       }
       if(req.user){
         res.locals.notesAndStuff = noteResults;
-        res.render('note-views/note-list-view.ejs');
+        res.render('note-views/note-list-view.ejs', console.log(noteResults));
 
       }
       else{

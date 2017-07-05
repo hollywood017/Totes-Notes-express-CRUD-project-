@@ -10,12 +10,14 @@ const passport     = require('passport');
 const session      = require("express-session");
 
 const app = express();
-require('dotenv').config();
+const dotenv = require('dotenv').config();
 
-require('./config/passport-config.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
+
+
+require('./config/passport-config.js');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
