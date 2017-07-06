@@ -5,8 +5,8 @@
   <% notesAndStuff.forEach((oneNote) => { %>
     <div class="single_note">
       <li>
-        <h3><%= oneNote.title %></h3>
-        <p> <%= oneNote.content %></p>
+        <h3><%- oneNote.title %></h3>
+        <p> <%- oneNote.content %></p>
         <a href="/<%= oneNote._id %>/edit">Edit</a>
         <a href="/notes/<%= oneNote._id %>/delete">Delete</a>
       </li>
