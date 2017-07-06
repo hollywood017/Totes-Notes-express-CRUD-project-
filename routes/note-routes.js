@@ -76,8 +76,7 @@ router.post('/note/edit/:id', (req, res, next) => {
   });
 });
 
-router.post('/notes/:id/delete', (req, res, next) => {
-  console.log('🚨🚨🚨🚨🚨🚨🚨🚨');
+router.get('/notes/:id/delete', (req, res, next) => {
   const id = req.params.id;
 
   NoteModel.findByIdAndRemove(id, (err, note) => {

@@ -225,5 +225,25 @@ textarea {
   text-align:right;
 }
 #note-title-input{
-  color: black;
+  color: $white;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.container{
+  background-color: $form-bg;
+  padding: 20px;
+  color: $white;
+  ul{
+    list-style: none;
+  }
+}
+.single_note{
+  display: inline-block;
+  margin: 20px;
+  width: 25%;
+  height: 25%;
+  a{
+    margin: 10px;
+  }
 }
