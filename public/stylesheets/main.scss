@@ -38,7 +38,15 @@ a {
     color:$main-dark;
   }
 }
-
+.landing_page{
+  background-image: url(../public/images/notes_background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  
+}
 .topnav {
     background-color: #333;
     overflow: hidden;
