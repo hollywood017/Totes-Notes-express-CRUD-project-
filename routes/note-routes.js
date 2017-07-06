@@ -32,6 +32,7 @@ router.get('/my-notes', (req, res, next) => {
     //find the notes owned by the logged in user
     { user: req.user.email },
 
+
     (err, noteResults) => {
       if(err) {
         next(err);
@@ -39,7 +40,7 @@ router.get('/my-notes', (req, res, next) => {
       }
       if(req.user){
         res.locals.notesAndStuff = noteResults;
-        res.render('note-views/note-list-view.ejs', console.log(noteResults));
+        res.render('note-views/note-list-view.ejs');
 
       }
       else{
@@ -48,5 +49,44 @@ router.get('/my-notes', (req, res, next) => {
     }
   );
 });
+
+router.get('/:id/edit', (req, res, next) => {
+  const noteId = req.params.id;
+
+  NoteModel.findById(noteId, (err, note) => {
+    if (err) { return next(err); }
+    res.locals.noteId = noteId;
+    res.render('note-views/edit-a-note.ejs', { note: note});
+  });
+});
+
+router.post('/note/edit/:id', (req, res, next) => {
+
+
+  const noteId = req.params.id;
+
+  const updates = {
+      title: req.body.noteTitle,
+      content: req.body.noteContent
+  };
+
+  NoteModel.findByIdAndUpdate(noteId, updates, (err, note) => {
+    if (err){ return next(err); }
+     res.redirect('/my-notes');
+  });
+});
+
+router.post('/notes/:id/delete', (req, res, next) => {
+  console.log('🚨🚨🚨🚨🚨🚨🚨🚨');
+  const id = req.params.id;
+
+  NoteModel.findByIdAndRemove(id, (err, note) => {
+    if (err){ return next(err); }
+
+    return res.redirect('/my-notes');
+  });
+
+});
+
 
 module.exports = router;

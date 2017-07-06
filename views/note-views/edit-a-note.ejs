@@ -1,0 +1,18 @@
+<h2> Edit this Note </h2>
+
+<form action="/note/edit/<%=noteId%>" method="post">
+
+    <div class="">
+      <div class="field-wrap">
+        <label for="note-title-input"></label>
+        <input id="note-title-input" type="text" name="noteTitle" value="<%= note.title %>">
+      </div>
+
+      <div class="field-wrap">
+        <label for="note-content-input"></label>
+        <textarea id="note-content-input" name="noteContent"><%= note.content %></textarea>
+      </div>
+      <button type="submit" name="button">Save this Note</button>
+    </div>
+
+</form>
