@@ -1,17 +1,23 @@
-<h2>My Notes</h2>
+<h2 id="header_top" >My Notes</h2>
 <div class="container">
 
-<ul>
-  <% notesAndStuff.forEach((oneNote) => { %>
-    <div class="single_note">
-      <li>
-        <h3><%- oneNote.title %></h3>
-        <p> <%- oneNote.content %></p>
-        <a href="/<%= oneNote._id %>/edit">Edit</a>
-        <a href="/notes/<%= oneNote._id %>/delete">Delete</a>
-      </li>
+<div class="card">
+<div class="card-block">
+  <ul>
+    <% notesAndStuff.forEach((oneNote) => { %>
+      <div class="single_note">
+        <li>
+          <h3 class= "card-title"><%- oneNote.title %></h3>
+          <p class="card-text"> <%- oneNote.content %></p>
+          <a class="btn btn-primary pain" href="/<%= oneNote._id %>/edit">Edit</a>
+          <a class="btn btn-primary pain" href="/notes/<%= oneNote._id %>/delete">Delete</a>
+        </li>
 
-    </div>
-  <% }) %>
-</ul>
+      </div>
+
+      <% }) %>
+    </ul>
+
+</div>
+</div>
 </div>
