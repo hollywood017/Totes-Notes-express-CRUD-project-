@@ -39,22 +39,59 @@ a {
   }
 }
 .landing_page{
-  background-image: url(../public/images/notes_background.jpg);
+  background-image: url(../images/landing_background.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  
+  height: 700px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  .landing_page_content{
+    height: 200px;
+    width: 370px;
+    margin-left: 40px;
+    p{
+      color: $white;
+      font-size: 19px;
+      font-weight: $thin;
+    }
+  }
+}
+.try_now {
+  background-color: transparent;
+  outline:none;
+  font-size:2rem;
+  font-weight:$bold;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  -webkit-appearance: none;
+  color:$main-light;
+  display:block;
+  width:100%;
+  padding:5px 10px;
+  border:1px solid $gray-light;
+  border-radius:0;
+  transition:border-color .25s ease, box-shadow .25s ease;
+  &:hover, &:focus {
+    outline:0;
+		border-color:$main;
+    color: $main-dark;
+  }
 }
 .topnav {
     background-color: #333;
     overflow: hidden;
+    img{
+      float: left;
+      width: auto;
+      height: 54px;
+      margin: 11px;
+    }
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-    float: left;
+    float: right;
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -126,10 +163,10 @@ a {
 }
 
 h1 {
-  text-align:center;
-  color:$white;
-  font-weight:$thin;
+  color: $white;
+  font-weight:bold;
   margin:0 0 40px;
+  font-size: 44px;
 }
 
 label {

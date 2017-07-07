@@ -1,3 +1,6 @@
+document.getElementById("myButton").onclick = function () {
+        location.href = "https://totes-notes.herokuapp.com/signup";
+    };
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
