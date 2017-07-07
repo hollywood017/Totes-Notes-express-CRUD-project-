@@ -50,7 +50,7 @@ a {
     height: 200px;
     width: 370px;
     margin-left: 40px;
-    p{
+    p {
       color: $white;
       font-size: 19px;
       font-weight: $thin;
@@ -63,9 +63,7 @@ a {
   outline:none;
   font-size:2rem;
   font-weight:$bold;
-  text-transform:uppercase;
   letter-spacing:.1em;
-  -webkit-appearance: none;
   color:$main-light;
   display:block;
   width:100%;
